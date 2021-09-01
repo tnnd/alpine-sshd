@@ -10,7 +10,7 @@ ADD docker-entrypoint.sh /usr/local/bin
 
 RUN addgroup alpine && adduser  -G alpine -s /bin/sh -D alpine \
   && echo "alpine:alpine" | /usr/sbin/chpasswd \
-  && echo "alpine    ALL=(ALL) ALL" >> /etc/sudoers
+  && echo "alpine    ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 EXPOSE 22
 ENTRYPOINT ["docker-entrypoint.sh"]
