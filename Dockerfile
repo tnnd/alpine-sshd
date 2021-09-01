@@ -9,9 +9,9 @@ RUN apk add --update openssh sudo bash \
 ADD docker-entrypoint.sh /usr/local/bin
 
 RUN addgroup alpine && adduser  -G alpine -s /bin/sh -D alpine \
-  && echo "alpine:alpine" | /usr/sbin/chpasswd
-RUN echo "alpine    ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-
+  && echo "alpine    ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+# RUN echo "alpine:alpine" | /usr/sbin/chpasswd
+  
 EXPOSE 22
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["/usr/sbin/sshd","-D"]
